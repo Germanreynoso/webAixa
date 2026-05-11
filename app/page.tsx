@@ -11,7 +11,7 @@ import { FloatingSidebar } from "@/components/floating-sidebar"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f8f8f8]">
+    <main className="min-h-screen bg-background">
       <ECommerceHeader />
       <FloatingSidebar />
       <div className="pb-12">

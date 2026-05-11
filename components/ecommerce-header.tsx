@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 
 export function ECommerceHeader() {
   return (
-    <header className="w-full bg-white text-gray-800">
+    <header className="w-full bg-background text-foreground border-b border-border">
       {/* Top Bar: Logo, Search, User Tools */}
       <div className="max-w-[1400px] mx-auto px-4 h-20 flex items-center justify-between gap-8">
         {/* Logo */}
@@ -17,8 +17,8 @@ export function ECommerceHeader() {
             <Leaf className="h-6 w-6 text-white" />
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="text-xl font-black text-gray-900 tracking-tighter">EL GROW</span>
-            <span className="text-sm font-bold text-primary tracking-widest">DE AIXA</span>
+            <span className="text-xl font-black text-foreground tracking-tighter">EL GROW</span>
+            <span className="text-sm font-bold text-primary tracking-widest uppercase">de Aixa</span>
           </div>
         </Link>
 
@@ -27,9 +27,9 @@ export function ECommerceHeader() {
           <Input 
             type="text" 
             placeholder="Buscar productos, carpas, luces..." 
-            className="w-full bg-gray-100 border-none h-11 pr-12 focus-visible:ring-primary/30"
+            className="w-full bg-card border-border h-11 pr-12 focus-visible:ring-primary/30 text-foreground"
           />
-          <div className="absolute right-0 top-0 h-full w-12 flex items-center justify-center bg-primary text-white rounded-r-md cursor-pointer hover:bg-primary/90 transition-colors">
+          <div className="absolute right-0 top-0 h-full w-12 flex items-center justify-center bg-primary text-primary-foreground rounded-r-md cursor-pointer hover:bg-primary/90 transition-colors">
             <Search className="h-5 w-5" />
           </div>
         </div>
@@ -50,8 +50,8 @@ export function ECommerceHeader() {
               </span>
             </div>
             <div className="hidden lg:flex flex-col leading-none">
-              <span className="text-[10px] font-bold text-gray-400">Items - $0.00</span>
-              <span className="text-xs font-bold">CARRITO</span>
+              <span className="text-[10px] font-bold text-muted-foreground">Items - $0.00</span>
+              <span className="text-xs font-bold text-foreground">CARRITO</span>
             </div>
           </Link>
         </div>
@@ -68,7 +68,7 @@ export function ECommerceHeader() {
 
           {/* Main Menu */}
           <nav className="flex h-full items-center ml-4">
-            <Link href="/" className="px-4 h-full flex items-center text-sm font-bold bg-white text-secondary hover:bg-white/90 transition-colors">
+            <Link href="/" className="px-4 h-full flex items-center text-sm font-bold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
               INICIO
             </Link>
             <Link href="/semillas" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">

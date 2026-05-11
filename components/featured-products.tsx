@@ -70,7 +70,7 @@ export function FeaturedProducts() {
       <div className="mx-auto max-w-[1400px] px-4">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-10 text-center">
-          <h2 className="text-2xl md:text-3xl font-black text-gray-900 uppercase tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-black text-foreground uppercase tracking-tight">
             PRODUCTOS <span className="text-primary">DESTACADOS</span>
           </h2>
           <div className="w-20 h-1 bg-secondary mt-2" />
@@ -81,13 +81,13 @@ export function FeaturedProducts() {
           {products.concat(products).slice(0, 6).map((product, index) => (
             <div
               key={index}
-              className="group bg-white rounded-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col"
+              className="group bg-card rounded-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col"
             >
               {/* Image Container */}
-              <div className="relative aspect-square bg-gray-50 overflow-hidden flex items-center justify-center p-4">
+              <div className="relative aspect-square bg-background/50 overflow-hidden flex items-center justify-center p-4">
                 {/* Placeholder Icon */}
-                <div className="w-full h-full flex items-center justify-center bg-gray-100/50 rounded-sm group-hover:scale-110 transition-transform duration-500">
-                  <span className="text-5xl">🌱</span>
+                <div className="w-full h-full flex items-center justify-center bg-background rounded-sm group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-5xl opacity-80">🌱</span>
                 </div>
                 
                 {/* Badge */}
@@ -106,7 +106,7 @@ export function FeaturedProducts() {
               {/* Content */}
               <div className="p-3 flex flex-col items-center text-center flex-grow">
                 {/* Name */}
-                <h3 className="text-xs font-bold text-gray-800 mb-1 line-clamp-2 min-h-[2rem]">
+                <h3 className="text-xs font-bold text-foreground mb-1 line-clamp-2 min-h-[2rem]">
                   {product.name}
                 </h3>
 
@@ -119,7 +119,7 @@ export function FeaturedProducts() {
 
                 {/* Price */}
                 <div className="mt-auto">
-                  <span className="text-sm font-black text-gray-900">
+                  <span className="text-sm font-black text-foreground">
                     {formatPrice(product.price)}
                   </span>
                 </div>

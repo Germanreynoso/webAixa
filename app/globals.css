@@ -5,62 +5,61 @@
 
 :root {
   /* El Grow de Aixa Brand Colors */
-  --background: oklch(0.18 0.02 280); /* Deep dark gray with a hint of blue/magenta */
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.22 0.02 280);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.22 0.02 280);
-  --popover-foreground: oklch(0.98 0 0);
+  --background: #1a1a1b; /* Slightly darker than brand gray for better contrast */
+  --foreground: #f8f8f8;
+  --card: #282829; /* Brand Gray */
+  --card-foreground: #f8f8f8;
+  --popover: #282829;
+  --popover-foreground: #f8f8f8;
   
   /* Primary - Magenta #D20480 */
-  --primary: oklch(0.52 0.22 340);
-  --primary-foreground: oklch(1 0 0);
+  --primary: #D20480;
+  --primary-foreground: #ffffff;
   
-  /* Secondary - Magenta Dark #A70366 (Replaced Green) */
-  --secondary: oklch(0.45 0.2 340);
-  --secondary-foreground: oklch(1 0 0);
+  /* Secondary - Magenta Dark #A70366 */
+  --secondary: #A70366;
+  --secondary-foreground: #ffffff;
   
-  /* Muted - Darker gray #282829 */
-  --muted: oklch(0.28 0.02 280);
-  --muted-foreground: oklch(0.7 0 0);
+  /* Muted - Darker gray */
+  --muted: #1a1a1b;
+  --muted-foreground: #a1a1aa;
   
-  /* Accent - Magenta Lighter/Vibrant */
-  --accent: oklch(0.6 0.25 340);
-  --accent-foreground: oklch(1 0 0);
+  /* Accent - Magenta Vibrant */
+  --accent: #E91E63;
+  --accent-foreground: #ffffff;
   
-  /* Border - Gray #282829 with some transparency */
-  --border: oklch(0.35 0.02 280 / 0.2);
-  --input: oklch(0.3 0.02 280);
-  --ring: oklch(0.52 0.22 340);
+  /* Border - Gray #282829 */
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #282829;
+  --ring: #D20480;
   
-  --chart-1: oklch(0.52 0.22 340);
-  --chart-2: oklch(0.45 0.2 340);
-  --chart-3: oklch(0.6 0.25 340);
-  --chart-4: oklch(0.35 0.02 280);
-  --chart-5: oklch(0.6 0.18 340);
+  --chart-1: #D20480;
+  --chart-2: #A70366;
+  --chart-3: #E91E63;
+  --chart-4: #282829;
+  --chart-5: #ff4081;
   
-  --radius: 1rem;
+  --radius: 0.5rem;
   
-  --sidebar: oklch(0.2 0.02 280);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.52 0.22 340);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.25 0.02 280);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.3 0.02 280);
-  --sidebar-ring: oklch(0.52 0.22 340);
+  --sidebar: #1a1a1b;
+  --sidebar-foreground: #f8f8f8;
+  --sidebar-primary: #D20480;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #282829;
+  --sidebar-accent-foreground: #f8f8f8;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #D20480;
 }
 
 .dark {
-  /* Keep dark theme consistent */
-  --background: oklch(0.12 0.02 280);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.18 0.02 280);
-  --card-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.52 0.22 340);
-  --secondary: oklch(0.45 0.2 340);
-  --muted: oklch(0.22 0.02 280);
-  --accent: oklch(0.6 0.25 340);
+  --background: #121212;
+  --foreground: #f8f8f8;
+  --card: #1a1a1b;
+  --card-foreground: #f8f8f8;
+  --primary: #D20480;
+  --secondary: #A70366;
+  --muted: #121212;
+  --accent: #E91E63;
 }
 
 @theme inline {

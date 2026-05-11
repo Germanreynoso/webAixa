@@ -19,16 +19,16 @@ export function StoreHeroLayout() {
     <section className="max-w-[1400px] mx-auto px-4 py-4">
       <div className="flex gap-4">
         {/* Vertical Sidebar */}
-        <div className="hidden lg:block w-[260px] flex-shrink-0 bg-white border border-gray-100 shadow-sm rounded-sm">
+        <div className="hidden lg:block w-[260px] flex-shrink-0 bg-card border border-border shadow-sm rounded-sm">
           <ul className="py-2">
             {categories.map((cat, i) => (
-              <li key={i} className="border-b border-gray-50 last:border-0">
+              <li key={i} className="border-b border-border last:border-0">
                 <Link 
                   href={`/${cat.name.toLowerCase()}`} 
-                  className="flex items-center justify-between px-4 py-3 text-sm font-bold text-gray-700 hover:text-primary transition-colors group"
+                  className="flex items-center justify-between px-4 py-3 text-sm font-bold text-foreground/80 hover:text-primary transition-colors group"
                 >
                   {cat.name}
-                  <cat.icon className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
+                  <cat.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </Link>
               </li>
             ))}
@@ -68,29 +68,29 @@ export function StoreHeroLayout() {
 
           {/* Quick Info Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white p-4 border border-gray-100 shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
               <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <Leaf className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+                <Leaf className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-gray-800">Semillas Feminizadas</span>
+              <span className="text-sm font-bold text-foreground">Semillas Feminizadas</span>
             </div>
-            <div className="bg-white p-4 border border-gray-100 shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
               <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <ShieldCheck className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+                <ShieldCheck className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-gray-800">Kits de Cultivo</span>
+              <span className="text-sm font-bold text-foreground">Kits de Cultivo</span>
             </div>
-            <div className="bg-white p-4 border border-gray-100 shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
               <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <Zap className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+                <Zap className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-gray-800">Iluminación LED</span>
+              <span className="text-sm font-bold text-foreground">Iluminación LED</span>
             </div>
-            <div className="bg-white p-4 border border-gray-100 shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
               <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <FlaskConical className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+                <FlaskConical className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-gray-800">Nutrientes Orgánicos</span>
+              <span className="text-sm font-bold text-foreground">Nutrientes Orgánicos</span>
             </div>
           </div>
         </div>

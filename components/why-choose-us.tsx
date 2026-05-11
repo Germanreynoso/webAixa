@@ -20,7 +20,7 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section id="nosotros" className="py-20 sm:py-28 bg-white border-y border-gray-100">
+    <section id="nosotros" className="py-20 sm:py-28 bg-background border-y border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
@@ -28,10 +28,10 @@ export function WhyChooseUs() {
             <span className="inline-block text-sm font-semibold text-primary tracking-wider uppercase mb-3">
               Por qué elegirnos
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
               Tu cultivo, nuestra pasión
             </h2>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               En El Grow de Aixa nos dedicamos a brindarte todo lo necesario para que tu cultivo prospere. Con años de experiencia y una selección cuidadosa de productos, somos tu aliado en cada etapa del crecimiento.
             </p>
 
@@ -44,10 +44,10 @@ export function WhyChooseUs() {
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">
+                      <h3 className="font-bold text-foreground mb-1">
                         {reason.title}
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-muted-foreground">
                         {reason.description}
                       </p>
                     </div>
@@ -59,25 +59,25 @@ export function WhyChooseUs() {
 
           {/* Image/Visual */}
           <div className="relative">
-            <div className="aspect-square rounded-3xl bg-gray-50 overflow-hidden border border-gray-100">
+            <div className="aspect-square rounded-3xl bg-card overflow-hidden border border-border">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-8xl mb-4">🌿</div>
-                  <p className="text-xl font-bold text-gray-900">El Grow de Aixa</p>
-                  <p className="text-gray-500">Concepción, Tucumán</p>
+                  <div className="text-8xl mb-4 opacity-80">🌿</div>
+                  <p className="text-xl font-bold text-foreground">El Grow de Aixa</p>
+                  <p className="text-muted-foreground">Concepción, Tucumán</p>
                 </div>
               </div>
             </div>
             
             {/* Floating Stats */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-lg p-6 border border-border">
               <div className="text-3xl font-bold text-primary">500+</div>
-              <div className="text-sm text-gray-500">Clientes Satisfechos</div>
+              <div className="text-sm text-muted-foreground">Clientes Satisfechos</div>
             </div>
             
-            <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="absolute -top-6 -right-6 bg-card rounded-2xl shadow-lg p-6 border border-border">
               <div className="text-3xl font-bold text-secondary">100+</div>
-              <div className="text-sm text-gray-500">Productos Disponibles</div>
+              <div className="text-sm text-muted-foreground">Productos Disponibles</div>
             </div>
           </div>
         </div>
