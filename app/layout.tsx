@@ -46,6 +46,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { ChatBot } from '@/components/chat-bot'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,6 +57,7 @@ export default function RootLayout({
     <html lang="es" className="bg-background">
       <body className={`${montserrat.variable} font-sans antialiased`}>
         {children}
+        <ChatBot />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
