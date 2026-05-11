@@ -20,7 +20,7 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section id="nosotros" className="py-20 sm:py-28 bg-background border-y border-border">
+    <section id="nosotros" className="py-20 sm:py-28 bg-transparent border-y border-border/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}

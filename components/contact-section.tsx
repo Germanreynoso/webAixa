@@ -20,7 +20,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contacto" className="py-20 sm:py-28 bg-background">
+    <section id="contacto" className="py-20 sm:py-28 bg-transparent">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">

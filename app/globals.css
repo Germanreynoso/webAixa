@@ -141,14 +141,13 @@
 
 /* Gradient utilities */
 .gradient-hero {
+  background: linear-gradient(145deg, #050505 0%, #1a1a1b 30%, #282829 60%, #A70366 90%, #D20480 100%);
+  background-attachment: fixed;
+}
+.gradient-hero-vibrant {
   background: radial-gradient(circle at top right, #D20480, transparent),
               radial-gradient(circle at bottom left, #A70366, transparent),
-              linear-gradient(135deg, #A70366 0%, #282829 100%);
-}
-.gradient-hero-reverse {
-  background: radial-gradient(circle at top left, #A70366, transparent),
-              radial-gradient(circle at bottom right, #D20480, transparent),
-              linear-gradient(135deg, #282829 0%, #A70366 100%);
+              linear-gradient(145deg, #050505 0%, #282829 100%);
 }
 
 .brand-pattern {

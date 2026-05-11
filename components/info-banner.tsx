@@ -2,8 +2,10 @@ import { Truck, MessageCircle, Award } from "lucide-react"
 
 export function InfoBanner() {
   return (
-    <section className="py-16 bg-accent">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-16 gradient-hero relative overflow-hidden">
+      {/* Overlay to ensure readability and depth */}
+      <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 text-balance">
             ¡Envíos a toda Tucumán!

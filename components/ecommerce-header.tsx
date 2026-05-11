@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 
 export function ECommerceHeader() {
   return (
-    <header className="w-full bg-background text-foreground border-b border-border">
+    <header className="w-full bg-transparent text-foreground border-b border-border/50 backdrop-blur-sm sticky top-0 z-50">
       {/* Top Bar: Logo, Search, User Tools */}
       <div className="max-w-[1400px] mx-auto px-4 h-20 flex items-center justify-between gap-8">
         {/* Logo */}

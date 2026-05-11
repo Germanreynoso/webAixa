@@ -40,7 +40,7 @@ export function StoreHeroLayout() {
           <div className="relative aspect-[21/9] w-full bg-gray-900 rounded-sm overflow-hidden group">
             {/* Background Image Placeholder (using a gradient for now, can be replaced by an image) */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
-            <div className="absolute inset-0 gradient-hero opacity-60" />
+            <div className="absolute inset-0 gradient-hero-vibrant opacity-80" />
             
             {/* Content */}
             <div className="relative z-20 h-full flex flex-col justify-center px-12 max-w-2xl">
