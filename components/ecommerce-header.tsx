@@ -12,48 +12,47 @@ export function ECommerceHeader() {
       {/* Top Bar: Logo, Search, User Tools */}
       <div className="max-w-[1400px] mx-auto px-4 h-20 flex items-center justify-between gap-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
-            <Leaf className="h-6 w-6 text-white" />
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0 scale-90 sm:scale-100">
+          <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-primary">
+            <Leaf className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="text-xl font-black text-foreground tracking-tighter">EL GROW</span>
-            <span className="text-sm font-bold text-primary tracking-widest uppercase">de Aixa</span>
+            <span className="text-lg sm:text-xl font-black text-foreground tracking-tighter">EL GROW</span>
+            <span className="text-[10px] sm:text-sm font-bold text-primary tracking-widest uppercase">de Aixa</span>
           </div>
         </Link>
 
         {/* Search Bar */}
-        <div className="flex-grow max-w-2xl relative">
+        <div className="hidden md:flex flex-grow max-w-2xl relative">
           <Input 
             type="text" 
-            placeholder="Buscar productos, carpas, luces..." 
+            placeholder="Buscar productos..." 
             className="w-full bg-card border-border h-11 pr-12 focus-visible:ring-primary/30 text-foreground"
           />
-          <div className="absolute right-0 top-0 h-full w-12 flex items-center justify-center bg-primary text-primary-foreground rounded-r-md cursor-pointer hover:bg-primary/90 transition-colors">
+          <div className="absolute right-0 top-0 h-full w-12 flex items-center justify-center bg-primary text-primary-foreground rounded-r-md cursor-pointer">
             <Search className="h-5 w-5" />
           </div>
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
+          <button className="md:hidden text-foreground">
+            <Search className="h-6 w-6" />
+          </button>
           <Link href="/perfil" className="flex flex-col items-center gap-0.5 hover:text-primary transition-colors">
             <User className="h-6 w-6" />
           </Link>
-          <Link href="/favoritos" className="flex flex-col items-center gap-0.5 hover:text-primary transition-colors">
-            <Heart className="h-6 w-6" />
-          </Link>
-          <Link href="/carrito" className="flex items-center gap-3 group">
+          <Link href="/carrito" className="flex items-center gap-2 group">
             <div className="relative">
-              <ShoppingCart className="h-7 w-7 group-hover:text-primary transition-colors" />
+              <ShoppingCart className="h-6 w-6 sm:h-7 sm:w-7 group-hover:text-primary transition-colors" />
               <span className="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full">
                 0
               </span>
             </div>
-            <div className="hidden lg:flex flex-col leading-none">
-              <span className="text-[10px] font-bold text-muted-foreground">Items - $0.00</span>
-              <span className="text-xs font-bold text-foreground">CARRITO</span>
-            </div>
           </Link>
+          <button className="lg:hidden text-foreground">
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
       </div>
 
@@ -66,30 +65,21 @@ export function ECommerceHeader() {
             CATEGORÍAS
           </div>
 
-          {/* Main Menu */}
-          <nav className="flex h-full items-center ml-4">
-            <Link href="/" className="px-4 h-full flex items-center text-sm font-bold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+          {/* Main Menu - Only visible on desktop */}
+          <nav className="hidden lg:flex h-full items-center ml-4 overflow-x-auto no-scrollbar">
+            <Link href="/" className="px-4 h-full flex items-center text-sm font-bold bg-primary text-primary-foreground">
               INICIO
             </Link>
-            <Link href="/semillas" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">
+            <Link href="/semillas" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10">
               SEMILLAS
             </Link>
-            <Link href="/iluminacion" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">
+            <Link href="/iluminacion" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10">
               ILUMINACIÓN
             </Link>
-            <Link href="/carpas" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">
+            <Link href="/carpas" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10">
               CARPAS
             </Link>
-            <Link href="/nutrientes" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">
-              NUTRIENTES
-            </Link>
-            <Link href="/ventilacion" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">
-              VENTILACIÓN
-            </Link>
-            <Link href="/accesorios" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 transition-colors">
-              ACCESORIOS
-            </Link>
-            <Link href="/ofertas" className="px-4 h-full flex items-center text-sm font-bold text-primary hover:bg-black/10 transition-colors">
+            <Link href="/ofertas" className="px-4 h-full flex items-center text-sm font-bold text-primary hover:bg-black/10">
               OFERTAS
             </Link>
           </nav>

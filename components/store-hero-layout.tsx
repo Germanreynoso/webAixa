@@ -37,17 +37,17 @@ export function StoreHeroLayout() {
 
         {/* Hero Banner Area */}
         <div className="flex-grow flex flex-col gap-4">
-          <div className="relative aspect-[21/9] w-full bg-gray-900 rounded-sm overflow-hidden group">
+          <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full bg-gray-900 rounded-sm overflow-hidden group">
             {/* Background Image Placeholder (using a gradient for now, can be replaced by an image) */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
             <div className="absolute inset-0 gradient-hero-vibrant opacity-80" />
             
             {/* Content */}
-            <div className="relative z-20 h-full flex flex-col justify-center px-12 max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter uppercase leading-none">
+            <div className="relative z-20 h-full flex flex-col justify-center px-6 sm:px-12 max-w-2xl">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mb-2 sm:mb-4 tracking-tighter uppercase leading-none">
                 ¡CULTIVA TU <span className="text-primary">PROPIO MUNDO!</span>
               </h2>
-              <p className="text-lg text-white/90 mb-8 font-medium">
+              <p className="text-sm sm:text-lg text-white/90 mb-4 sm:mb-8 font-medium">
                 Equipamiento Premium para Cultivo de Interior y Exterior - Ver Ofertas Especiales
               </p>
               
@@ -67,30 +67,30 @@ export function StoreHeroLayout() {
           </div>
 
           {/* Quick Info Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
-              <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <Leaf className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-card p-3 sm:p-4 border border-border shadow-sm flex items-center gap-3 sm:gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
+                <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-foreground">Semillas Feminizadas</span>
+              <span className="text-xs sm:text-sm font-bold text-foreground">Semillas Feminizadas</span>
             </div>
-            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
-              <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <ShieldCheck className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+            <div className="bg-card p-3 sm:p-4 border border-border shadow-sm flex items-center gap-3 sm:gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
+                <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-foreground">Kits de Cultivo</span>
+              <span className="text-xs sm:text-sm font-bold text-foreground">Kits de Cultivo</span>
             </div>
-            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
-              <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <Zap className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+            <div className="bg-card p-3 sm:p-4 border border-border shadow-sm flex items-center gap-3 sm:gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
+                <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-foreground">Iluminación LED</span>
+              <span className="text-xs sm:text-sm font-bold text-foreground">Iluminación LED</span>
             </div>
-            <div className="bg-card p-4 border border-border shadow-sm flex items-center gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
-              <div className="h-10 w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
-                <FlaskConical className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+            <div className="bg-card p-3 sm:p-4 border border-border shadow-sm flex items-center gap-3 sm:gap-4 rounded-sm hover:border-primary transition-colors cursor-pointer group">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 bg-primary/10 flex items-center justify-center rounded-full group-hover:bg-primary transition-colors">
+                <FlaskConical className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
-              <span className="text-sm font-bold text-foreground">Nutrientes Orgánicos</span>
+              <span className="text-xs sm:text-sm font-bold text-foreground">Nutrientes Orgánicos</span>
             </div>
           </div>
         </div>
