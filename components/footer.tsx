@@ -1,4 +1,4 @@
-import { Leaf, Instagram, Phone, MapPin } from "lucide-react"
+import { Leaf, Instagram, Phone, MapPin, Facebook } from "lucide-react"
 import Link from "next/link"
 
 export function Footer() {
@@ -9,12 +9,8 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
-                <Leaf className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <span className="text-xl font-bold block">El Grow de Aixa</span>
-                <span className="text-sm text-white/60">Todo para tu cultivo</span>
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 flex items-center justify-center overflow-hidden rounded-md">
+                <img src="/images/logo.jpeg" alt="El Grow de Aixa" className="h-full w-full object-cover" />
               </div>
             </Link>
             <p className="text-white/70 mb-6 max-w-md leading-relaxed">
@@ -39,6 +35,15 @@ export function Footer() {
               >
                 <Phone className="h-5 w-5" />
               </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61577892680602&locale=es_LA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
@@ -47,28 +52,28 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-6">Categorías</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#categorias" className="text-white/70 hover:text-white transition-colors">
-                  Sustratos y Tierra
+                <Link href="/catalogo?cat=sustratos" className="text-white/70 hover:text-white transition-colors">
+                  Sustratos y Enmiendas
                 </Link>
               </li>
               <li>
-                <Link href="#categorias" className="text-white/70 hover:text-white transition-colors">
-                  Semillas y Genética
+                <Link href="/catalogo?cat=fertilizantes" className="text-white/70 hover:text-white transition-colors">
+                  Fertilizantes
                 </Link>
               </li>
               <li>
-                <Link href="#categorias" className="text-white/70 hover:text-white transition-colors">
-                  Iluminación
+                <Link href="/catalogo?cat=control-plagas" className="text-white/70 hover:text-white transition-colors">
+                  Control de Plagas
                 </Link>
               </li>
               <li>
-                <Link href="#categorias" className="text-white/70 hover:text-white transition-colors">
-                  Nutrientes
+                <Link href="/catalogo?cat=macetas" className="text-white/70 hover:text-white transition-colors">
+                  Macetas
                 </Link>
               </li>
               <li>
-                <Link href="#categorias" className="text-white/70 hover:text-white transition-colors">
-                  Sistemas de Riego
+                <Link href="/catalogo?cat=accesorios" className="text-white/70 hover:text-white transition-colors">
+                  Accesorios
                 </Link>
               </li>
             </ul>
@@ -80,7 +85,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-white/70">Concepción, Tucumán</span>
+                <span className="text-white/70">Roca y esquina Moreno, Concepción - Tucumán</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0" />

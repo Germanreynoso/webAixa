@@ -2,6 +2,7 @@
 
 import { Star, ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
+import { formatPrice } from "@/lib/utils"
 
 const products = [
   {
@@ -45,14 +46,6 @@ const products = [
     image: "/products/maceta.jpg",
   },
 ]
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat('es-AR', {
-    style: 'currency',
-    currency: 'ARS',
-    minimumFractionDigits: 0,
-  }).format(price)
-}
 
 export function FeaturedProducts() {
   const [currentIndex, setCurrentIndex] = useState(0)

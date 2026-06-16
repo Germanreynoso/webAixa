@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Phone, Clock, Instagram, Send } from "lucide-react"
+import { MapPin, Phone, Clock, Instagram, Send, Facebook } from "lucide-react"
 import { useState } from "react"
 
 export function ContactSection() {
@@ -45,7 +45,14 @@ export function ContactSection() {
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-bold text-white mb-1">Ubicación</h3>
-                <p className="text-muted-foreground">Concepción, Tucumán</p>
+                <a
+                  href="https://www.google.com/maps?q=-27.3430743,-65.5899327&z=17&hl=es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Roca y esquina Moreno, Concepción - Tucumán
+                </a>
               </div>
 
               <div className="bg-card rounded-xl border border-border p-6">
@@ -68,7 +75,9 @@ export function ContactSection() {
                   <Clock className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-bold text-white mb-1">Horarios</h3>
-                <p className="text-muted-foreground">Lun - Sáb: 9:00 - 20:00</p>
+                <p className="text-muted-foreground whitespace-pre-line">
+                  Lunes a Sábados{'\n'}09:00 a 13:00 / 17:00 a 21:00
+                </p>
               </div>
 
               <div className="bg-card rounded-xl border border-border p-6">
@@ -90,7 +99,7 @@ export function ContactSection() {
             {/* Map */}
             <div className="rounded-xl overflow-hidden border border-border h-[300px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28397.77832855!2d-65.6!3d-27.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9423cf2b3c2c9e5d%3A0x8c1f4f9f9f9f9f9f!2sConcepci%C3%B3n%2C%20Tucum%C3%A1n!5e0!3m2!1ses!2sar!4v1234567890"
+                src="https://maps.google.com/maps?q=-27.3430743,-65.5899327&z=17&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -164,6 +173,24 @@ export function ContactSection() {
                 <Send className="h-5 w-5" />
                 Enviar por WhatsApp
               </button>
+              <a
+                href="https://instagram.com/elgrowdeaixa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] px-6 py-4 text-base font-semibold text-white hover:opacity-90 transition-opacity"
+              >
+                <Instagram className="h-5 w-5" />
+                Seguinos en Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61577892680602&locale=es_LA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#1877F2] px-6 py-4 text-base font-semibold text-white hover:bg-[#1864D9] transition-colors mt-4"
+              >
+                <Facebook className="h-5 w-5 fill-current" />
+                Seguinos en Facebook
+              </a>
             </form>
           </div>
         </div>

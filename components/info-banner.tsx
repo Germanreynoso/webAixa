@@ -8,10 +8,10 @@ export function InfoBanner() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 text-balance">
-            ¡Envíos a toda Tucumán!
+            ¡Envíos a todo el País!
           </h2>
           <p className="text-white/80 text-lg">
-            Recibí tus productos en la puerta de tu casa
+            Recibí tus productos en cualquier punto de Argentina
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export function InfoBanner() {
               Envíos Rápidos
             </h3>
             <p className="text-white/80">
-              Entregas en 24-48hs en Concepción y alrededores
+              Despachamos tu pedido en el día a donde estés
             </p>
           </div>
 

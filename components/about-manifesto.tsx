@@ -49,7 +49,7 @@ export function AboutManifesto() {
           <div className="order-1 lg:order-2 relative animate-in fade-in slide-in-from-right duration-1000">
             <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl group">
               <Image 
-                src="/images/about/manifesto.png" 
+                src="/images/about/aixa-historia.jpeg" 
                 alt="El Grow de Aixa - Identidad"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
