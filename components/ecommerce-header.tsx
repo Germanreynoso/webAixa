@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { useState, type FormEvent } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useCart } from "@/components/cart/cart-provider"
 
 const NAV_LINKS = [
   { label: "SUSTRATOS", href: "/catalogo?cat=sustratos" },
@@ -17,6 +18,7 @@ const NAV_LINKS = [
 
 export function ECommerceHeader() {
   const router = useRouter()
+  const { count, openCart } = useCart()
   const [search, setSearch] = useState("")
 
   const handleSearch = (e: FormEvent) => {
@@ -62,14 +64,21 @@ export function ECommerceHeader() {
           <Link href="/perfil" className="flex flex-col items-center gap-0.5 hover:text-primary transition-colors">
             <User className="h-6 w-6" />
           </Link>
-          <Link href="/carrito" className="flex items-center gap-2 group">
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label="Abrir carrito"
+            className="flex items-center gap-2 group"
+          >
             <div className="relative">
               <ShoppingCart className="h-6 w-6 sm:h-7 sm:w-7 group-hover:text-primary transition-colors" />
-              <span className="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full">
-                0
-              </span>
+              {count > 0 && (
+                <span className="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold h-4 min-w-4 px-1 flex items-center justify-center rounded-full">
+                  {count}
+                </span>
+              )}
             </div>
-          </Link>
+          </button>
           <button className="lg:hidden text-foreground">
             <Menu className="h-6 w-6" />
           </button>

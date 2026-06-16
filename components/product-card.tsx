@@ -1,18 +1,6 @@
-import { MessageCircle } from "lucide-react"
 import { getCategory, type Product } from "@/lib/products"
 import { formatPrice } from "@/lib/utils"
-
-const WHATSAPP_PHONE = "5493865718714"
-
-function buildWhatsAppHref(product: Product) {
-  const effective =
-    product.onSale && product.salePrice != null ? product.salePrice : product.price
-  const priceText = effective != null ? ` (${formatPrice(effective)})` : ""
-  const intro = product.inStock
-    ? `Hola! Me interesa el producto "${product.name}"${priceText}. ¿Está disponible?`
-    : `Hola! Quería saber si van a tener stock de "${product.name}".`
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(intro)}`
-}
+import { AddToCartButton } from "@/components/add-to-cart-button"
 
 export function ProductCard({ product }: { product: Product }) {
   const category = getCategory(product.category)
@@ -97,19 +85,7 @@ export function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* CTA */}
-      <a
-        href={buildWhatsAppHref(product)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`w-full py-2 text-white text-[10px] font-bold uppercase transition-colors flex items-center justify-center gap-2 ${
-          product.inStock
-            ? "bg-secondary hover:bg-primary"
-            : "bg-foreground/40 hover:bg-foreground/60"
-        }`}
-      >
-        <MessageCircle className="h-3 w-3" />
-        {product.inStock ? "Consultar por WhatsApp" : "Avisar disponibilidad"}
-      </a>
+      <AddToCartButton product={product} />
     </div>
   )
 }

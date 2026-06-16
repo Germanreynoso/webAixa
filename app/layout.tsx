@@ -47,6 +47,8 @@ export const viewport: Viewport = {
 }
 
 import { ChatBot } from '@/components/chat-bot'
+import { CartProvider } from '@/components/cart/cart-provider'
+import { CartDrawer } from '@/components/cart/cart-drawer'
 
 export default function RootLayout({
   children,
@@ -56,8 +58,11 @@ export default function RootLayout({
   return (
     <html lang="es" className="bg-background">
       <body className={`${montserrat.variable} font-sans antialiased`}>
-        {children}
-        <ChatBot />
+        <CartProvider>
+          {children}
+          <CartDrawer />
+          <ChatBot />
+        </CartProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
