@@ -38,6 +38,7 @@ export function CartDrawer() {
       buildMessage(items, total, hasConsultar),
     )}`
     window.open(href, "_blank", "noopener,noreferrer")
+    clear()
     setOpen(false)
   }
 
