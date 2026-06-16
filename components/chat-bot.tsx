@@ -83,7 +83,7 @@ export function ChatBot() {
           <CardHeader className="bg-[#D20480] text-white p-4 flex flex-row items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-2">
               <div className="bg-white p-0.5 rounded-full overflow-hidden w-10 h-10 border-2 border-white/20">
-                <img src="/mascot.png" alt="Mascota" className="w-full h-full object-cover" />
+                <img src="/chatbot-avatar.jpeg" alt="Mascota" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h3 className="font-bold text-sm">Asistente Aixa</h3>
@@ -184,7 +184,7 @@ export function ChatBot() {
           <X className="w-16 h-16 text-[#D20480]" />
         ) : (
           <div className="w-full h-full bg-white flex items-center justify-center p-1">
-            <img src="/mascot.png" alt="Mascota Chat" className="w-full h-full object-contain" />
+            <img src="/chatbot-avatar.jpeg" alt="Mascota Chat" className="w-full h-full object-contain" />
           </div>
         )}
       </Button>
