@@ -3,7 +3,8 @@ import { ECommerceHeader } from "@/components/ecommerce-header"
 import { Footer } from "@/components/footer"
 import { CatalogClient } from "@/components/catalog/catalog-client"
 import { CATEGORIES, type CategoryId } from "@/lib/products"
-import type { FilterCategory } from "@/components/catalog/catalog-filters"
+import { getBrands, getSubcategories } from "@/lib/catalog"
+import { ALL, type FilterCategory } from "@/components/catalog/catalog-filters"
 
 export const metadata: Metadata = {
   title: "Catálogo | El Grow de Aixa",
@@ -11,7 +12,20 @@ export const metadata: Metadata = {
     "Catálogo completo de El Grow de Aixa: sustratos y enmiendas, fertilizantes, control de plagas, macetas y accesorios. Consultá precios y disponibilidad por WhatsApp.",
 }
 
-type SearchParams = Promise<{ cat?: string; q?: string; ofertas?: string }>
+type ParamValue = string | string[] | undefined
+type SearchParams = Promise<{
+  cat?: ParamValue
+  q?: ParamValue
+  marca?: ParamValue
+  sub?: ParamValue
+  ofertas?: ParamValue
+  stock?: ParamValue
+}>
+
+/** Un param repetido (?q=a&q=b) llega como array; nos quedamos con el primer valor. */
+function first(v: ParamValue): string | undefined {
+  return Array.isArray(v) ? v[0] : v
+}
 
 export default async function CatalogoPage({
   searchParams,
@@ -19,10 +33,24 @@ export default async function CatalogoPage({
   searchParams: SearchParams
 }) {
   const sp = await searchParams
-  const validCategory = CATEGORIES.find((c) => c.id === sp.cat)?.id as CategoryId | undefined
+  const cat = first(sp.cat)
+  const marca = first(sp.marca)
+  const sub = first(sp.sub)
+  const ofertas = first(sp.ofertas)
+  const stock = first(sp.stock)
+
+  const validCategory = CATEGORIES.find((c) => c.id === cat)?.id as CategoryId | undefined
   const initialCategory: FilterCategory = validCategory ?? "all"
-  const initialQuery = sp.q ?? ""
-  const initialOffersOnly = sp.ofertas === "1" || sp.ofertas === "true"
+  const initialQuery = first(sp.q) ?? ""
+
+  // Validar marca / subcategoría contra las opciones reales (acotadas por categoría si aplica).
+  const validBrands = getBrands(validCategory)
+  const initialBrand = marca && validBrands.includes(marca) ? marca : ALL
+  const validSubs = getSubcategories(validCategory)
+  const initialSubcategory = sub && validSubs.includes(sub) ? sub : ALL
+
+  const initialOffersOnly = ofertas === "1" || ofertas === "true"
+  const initialInStockOnly = stock === "1" || stock === "true"
 
   return (
     <main className="min-h-screen gradient-hero">
@@ -43,7 +71,10 @@ export default async function CatalogoPage({
           <CatalogClient
             initialCategory={initialCategory}
             initialQuery={initialQuery}
+            initialBrand={initialBrand}
+            initialSubcategory={initialSubcategory}
             initialOffersOnly={initialOffersOnly}
+            initialInStockOnly={initialInStockOnly}
           />
         </div>
       </div>

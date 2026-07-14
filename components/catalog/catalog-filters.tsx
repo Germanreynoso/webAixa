@@ -4,10 +4,20 @@ import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { cn } from "@/lib/utils"
 import type { CategoryId, CategoryMeta } from "@/lib/products"
 
 export type FilterCategory = CategoryId | "all"
+
+/** Valor sentinela para "sin filtro" (Radix Select no admite value=""). */
+export const ALL = "all"
 
 interface CatalogFiltersProps {
   categories: CategoryMeta[]
@@ -15,6 +25,12 @@ interface CatalogFiltersProps {
   onCategoryChange: (category: FilterCategory) => void
   query: string
   onQueryChange: (query: string) => void
+  brands: string[]
+  brand: string
+  onBrandChange: (brand: string) => void
+  subcategories: string[]
+  subcategory: string
+  onSubcategoryChange: (subcategory: string) => void
   inStockOnly: boolean
   onInStockToggle: (value: boolean) => void
   offersOnly: boolean
@@ -28,6 +44,12 @@ export function CatalogFilters({
   onCategoryChange,
   query,
   onQueryChange,
+  brands,
+  brand,
+  onBrandChange,
+  subcategories,
+  subcategory,
+  onSubcategoryChange,
   inStockOnly,
   onInStockToggle,
   offersOnly,
@@ -73,6 +95,43 @@ export function CatalogFilters({
           </button>
         ))}
       </div>
+
+      {/* Marca + Subcategoría (dependientes de la categoría) */}
+      {(brands.length > 0 || subcategories.length > 0) && (
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-3">
+          {brands.length > 0 && (
+            <Select value={brand} onValueChange={onBrandChange}>
+              <SelectTrigger className="h-9 min-w-[10rem] bg-card" aria-label="Filtrar por marca">
+                <SelectValue placeholder="Todas las marcas" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={ALL}>Todas las marcas</SelectItem>
+                {brands.map((b) => (
+                  <SelectItem key={b} value={b}>
+                    {b}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+
+          {subcategories.length > 0 && (
+            <Select value={subcategory} onValueChange={onSubcategoryChange}>
+              <SelectTrigger className="h-9 min-w-[11rem] bg-card" aria-label="Filtrar por subcategoría">
+                <SelectValue placeholder="Todas las subcategorías" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={ALL}>Todas las subcategorías</SelectItem>
+                {subcategories.map((s) => (
+                  <SelectItem key={s} value={s}>
+                    {s}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        </div>
+      )}
 
       {/* Toggles + count */}
       <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">

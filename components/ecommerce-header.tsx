@@ -1,12 +1,10 @@
 "use client"
 
-import { Search, User, Heart, ShoppingCart, Leaf, ChevronDown, Menu } from "lucide-react"
+import { Search, User, ShoppingCart, Menu } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState, type FormEvent } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
 import { useCart } from "@/components/cart/cart-provider"
+import { SiteSearch } from "@/components/search/site-search"
 
 const NAV_LINKS = [
   { label: "SUSTRATOS", href: "/catalogo?cat=sustratos" },
@@ -17,15 +15,14 @@ const NAV_LINKS = [
 ]
 
 export function ECommerceHeader() {
-  const router = useRouter()
   const { count, openCart } = useCart()
-  const [search, setSearch] = useState("")
+  const [searchOpen, setSearchOpen] = useState(false)
+  // null hasta montar en cliente, para evitar mismatch de hidratación.
+  const [isMac, setIsMac] = useState<boolean | null>(null)
 
-  const handleSearch = (e: FormEvent) => {
-    e.preventDefault()
-    const q = search.trim()
-    router.push(q ? `/catalogo?q=${encodeURIComponent(q)}` : "/catalogo")
-  }
+  useEffect(() => {
+    setIsMac(/mac|iphone|ipad|ipod/i.test(navigator.userAgent))
+  }, [])
 
   return (
     <header className="w-full bg-transparent text-foreground border-b border-border/50 backdrop-blur-sm sticky top-0 z-50">
@@ -38,29 +35,32 @@ export function ECommerceHeader() {
           </div>
         </Link>
 
-        {/* Search Bar */}
-        <form onSubmit={handleSearch} className="hidden md:flex flex-grow max-w-2xl relative">
-          <Input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar productos..."
-            className="w-full bg-card border-border h-11 pr-12 focus-visible:ring-primary/30 text-foreground"
-          />
-          <button
-            type="submit"
-            aria-label="Buscar"
-            className="absolute right-0 top-0 h-full w-12 flex items-center justify-center bg-primary text-primary-foreground rounded-r-md cursor-pointer hover:bg-accent transition-colors"
-          >
-            <Search className="h-5 w-5" />
-          </button>
-        </form>
+        {/* Search trigger (opens command dialog) */}
+        <button
+          type="button"
+          onClick={() => setSearchOpen(true)}
+          aria-label="Buscar productos, marcas o categorías"
+          className="hidden md:flex flex-grow max-w-2xl items-center gap-2 h-11 rounded-md border border-border bg-card px-3 text-left text-sm text-muted-foreground hover:border-primary/40 transition-colors"
+        >
+          <Search className="h-5 w-5 shrink-0" />
+          <span className="flex-grow">Buscar productos, marcas o categorías...</span>
+          {isMac !== null && (
+            <kbd className="hidden lg:inline-flex items-center gap-1 rounded border border-border bg-background px-1.5 py-0.5 text-[10px] font-bold text-muted-foreground">
+              {isMac ? "⌘K" : "Ctrl K"}
+            </kbd>
+          )}
+        </button>
 
         {/* Icons */}
         <div className="flex items-center gap-4 sm:gap-6">
-          <Link href="/catalogo" aria-label="Buscar" className="md:hidden text-foreground hover:text-primary transition-colors">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Buscar"
+            className="md:hidden text-foreground hover:text-primary transition-colors"
+          >
             <Search className="h-6 w-6" />
-          </Link>
+          </button>
           <Link href="/perfil" className="flex flex-col items-center gap-0.5 hover:text-primary transition-colors">
             <User className="h-6 w-6" />
           </Link>
@@ -117,6 +117,8 @@ export function ECommerceHeader() {
           </nav>
         </div>
       </div>
+
+      <SiteSearch open={searchOpen} onOpenChange={setSearchOpen} />
     </header>
   )
 }
