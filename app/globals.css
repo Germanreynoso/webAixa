@@ -27,6 +27,9 @@
   /* Accent - Magenta Vibrant */
   --accent: #E91E63;
   --accent-foreground: #ffffff;
+
+  /* Verde del isotipo (manual de marca): acento para retiro, stock y WhatsApp */
+  --brand-green: #4BA739;
   
   /* Border - Gray #282829 */
   --border: rgba(255, 255, 255, 0.1);
@@ -80,6 +83,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-brand-green: var(--brand-green);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);

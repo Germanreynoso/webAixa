@@ -1,9 +1,10 @@
 import { ECommerceHeader } from "@/components/ecommerce-header"
-import { StoreHeroLayout } from "@/components/store-hero-layout"
+import { HomeHero } from "@/components/home/home-hero"
+import { BenefitsBar } from "@/components/home/benefits-bar"
+import { CategoryMosaic } from "@/components/home/category-mosaic"
 import { FeaturedOffers } from "@/components/featured-offers"
-import { AboutManifesto } from "@/components/about-manifesto"
-import { InfoBanner } from "@/components/info-banner"
-import { WhyChooseUs } from "@/components/why-choose-us"
+import { BrandStrip } from "@/components/home/brand-strip"
+import { StoryTeaser } from "@/components/home/story-teaser"
 import { Testimonials } from "@/components/testimonials"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -13,11 +14,12 @@ export default function Home() {
     <main className="min-h-screen gradient-hero">
       <ECommerceHeader />
       <div className="pb-12">
-        <StoreHeroLayout />
-        <AboutManifesto />
+        <HomeHero />
+        <BenefitsBar />
+        <CategoryMosaic />
         <FeaturedOffers />
-        <InfoBanner />
-        <WhyChooseUs />
+        <BrandStrip />
+        <StoryTeaser />
         <Testimonials />
         <ContactSection />
       </div>

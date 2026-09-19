@@ -115,6 +115,9 @@ export function ECommerceHeader() {
                 {link.label}
               </Link>
             ))}
+            <Link href="/nosotros" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 whitespace-nowrap">
+              NOSOTROS
+            </Link>
             <Link href="/catalogo?ofertas=1" className="px-2 h-full flex items-center whitespace-nowrap group">
               <span className="px-3 py-1 rounded-full bg-white text-secondary text-sm font-black group-hover:bg-white/90 transition-colors">
                 OFERTAS
@@ -131,7 +134,7 @@ export function ECommerceHeader() {
             <SheetTitle className="text-sm font-black uppercase tracking-wide text-foreground">Menú</SheetTitle>
           </SheetHeader>
           <nav className="flex flex-col overflow-y-auto">
-            {[{ label: "INICIO", href: "/" }, { label: "TODO EL CATÁLOGO", href: "/catalogo" }, ...NAV_LINKS].map((link) => (
+            {[{ label: "INICIO", href: "/" }, { label: "TODO EL CATÁLOGO", href: "/catalogo" }, ...NAV_LINKS, { label: "NOSOTROS", href: "/nosotros" }].map((link) => (
               <SheetClose asChild key={link.href}>
                 <Link
                   href={link.href}

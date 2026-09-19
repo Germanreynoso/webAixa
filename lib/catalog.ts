@@ -37,3 +37,25 @@ export function getSubcategories(category?: CategoryId): string[] {
 export function searchProductSuggestions(query: string, limit = 8): Product[] {
   return searchProducts(query, PRODUCTS).slice(0, limit)
 }
+
+/** Porcentaje de descuento redondeado, o null si el producto no tiene una oferta válida. */
+export function getDiscountPercent(product: Product): number | null {
+  if (!product.onSale || product.price == null || product.salePrice == null) return null
+  if (product.salePrice >= product.price) return null
+  return Math.round((1 - product.salePrice / product.price) * 100)
+}
+
+/** Oferta con stock, foto y mayor descuento: la que se destaca en el hero de la home. */
+export function getFeaturedOffer(): Product | null {
+  let best: Product | null = null
+  let bestPct = 0
+  for (const p of PRODUCTS) {
+    const pct = getDiscountPercent(p)
+    if (pct == null || !p.inStock || !p.image) continue
+    if (pct > bestPct) {
+      best = p
+      bestPct = pct
+    }
+  }
+  return best
+}

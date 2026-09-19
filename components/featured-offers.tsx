@@ -12,17 +12,24 @@ export function FeaturedOffers() {
   if (offers.length === 0) return null
 
   return (
-    <section id="ofertas" className="relative py-12 bg-transparent overflow-hidden">
+    <section id="ofertas" className="relative pt-12 bg-transparent overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-4">
         {/* Header */}
-        <div className="flex flex-col items-center mb-10 text-center">
-          <h2 className="text-2xl md:text-3xl font-black text-foreground uppercase tracking-tight">
-            NUESTRAS <span className="text-primary">OFERTAS</span>
-          </h2>
-          <p className="text-sm text-muted-foreground mt-2">
-            Descuentos vigentes — consultá disponibilidad por WhatsApp
-          </p>
-          <div className="w-20 h-1 bg-secondary mt-3" />
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-black text-foreground uppercase tracking-tight">
+              Ofertas de hoy
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Precios vigentes mientras haya stock.
+            </p>
+          </div>
+          <Link
+            href="/catalogo?ofertas=1"
+            className="text-sm font-bold text-primary underline underline-offset-4 hover:text-accent transition-colors"
+          >
+            Ver todas las ofertas
+          </Link>
         </div>
 
         {/* Offers grid */}
