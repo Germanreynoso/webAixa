@@ -1,6 +1,7 @@
 "use client"
 
-import { Search } from "lucide-react"
+import { useState } from "react"
+import { Search, SlidersHorizontal } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
@@ -61,23 +62,50 @@ export function CatalogFilters({
     ...categories.map((c) => ({ id: c.id, label: c.shortLabel })),
   ]
 
+  // En móvil, marca / subcategoría / toggles se pliegan para no tapar el grid.
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const activeCount =
+    Number(brand !== ALL) + Number(subcategory !== ALL) + Number(offersOnly) + Number(inStockOnly)
+
   return (
-    <div className="sticky top-[124px] z-30 -mx-4 px-4 py-4 mb-8 bg-background/80 backdrop-blur border-b border-border">
-      {/* Search */}
-      <div className="relative max-w-xl mx-auto mb-4">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          value={query}
-          onChange={(e) => onQueryChange(e.target.value)}
-          placeholder="Buscar productos..."
-          className="pl-9 bg-card border-border h-11 focus-visible:ring-primary/30 text-foreground"
-          aria-label="Buscar productos"
-        />
+    <div className="sticky top-[124px] z-30 -mx-4 px-4 py-3 md:py-4 mb-8 bg-background/80 backdrop-blur border-b border-border">
+      {/* Search + toggle de filtros (móvil) */}
+      <div className="flex items-center gap-2 max-w-xl mx-auto mb-3 md:mb-4">
+        <div className="relative flex-grow">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            type="search"
+            value={query}
+            onChange={(e) => onQueryChange(e.target.value)}
+            placeholder="Buscar productos..."
+            className="pl-9 bg-card border-border h-11 focus-visible:ring-primary/30 text-foreground"
+            aria-label="Buscar productos"
+          />
+        </div>
+        <button
+          type="button"
+          onClick={() => setFiltersOpen((v) => !v)}
+          aria-expanded={filtersOpen}
+          aria-controls="catalog-extra-filters"
+          className={cn(
+            "md:hidden h-11 px-3 flex items-center gap-2 rounded-md border text-xs font-bold uppercase tracking-wide transition-colors",
+            filtersOpen || activeCount > 0
+              ? "bg-primary text-primary-foreground border-primary"
+              : "bg-card text-foreground/80 border-border",
+          )}
+        >
+          <SlidersHorizontal className="h-4 w-4" />
+          Filtros
+          {activeCount > 0 && (
+            <span className="h-4 min-w-4 px-1 flex items-center justify-center rounded-full bg-white text-primary text-[10px] font-black">
+              {activeCount}
+            </span>
+          )}
+        </button>
       </div>
 
-      {/* Category chips */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+      {/* Category chips: una fila deslizable en móvil, centradas en desktop */}
+      <div className="flex items-center gap-2 -mx-4 px-4 overflow-x-auto no-scrollbar md:mx-0 md:px-0 md:flex-wrap md:justify-center md:overflow-visible md:mb-3">
         {chips.map((chip) => (
           <button
             key={chip.id}
@@ -85,7 +113,7 @@ export function CatalogFilters({
             onClick={() => onCategoryChange(chip.id)}
             aria-pressed={category === chip.id}
             className={cn(
-              "px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide border transition-colors",
+              "shrink-0 whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide border transition-colors",
               category === chip.id
                 ? "bg-primary text-primary-foreground border-primary"
                 : "bg-card text-foreground/70 border-border hover:border-primary/50 hover:text-foreground",
@@ -96,60 +124,62 @@ export function CatalogFilters({
         ))}
       </div>
 
-      {/* Marca + Subcategoría (dependientes de la categoría) */}
-      {(brands.length > 0 || subcategories.length > 0) && (
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-3">
-          {brands.length > 0 && (
-            <Select value={brand} onValueChange={onBrandChange}>
-              <SelectTrigger className="h-9 min-w-[10rem] bg-card" aria-label="Filtrar por marca">
-                <SelectValue placeholder="Todas las marcas" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value={ALL}>Todas las marcas</SelectItem>
-                {brands.map((b) => (
-                  <SelectItem key={b} value={b}>
-                    {b}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
+      <div id="catalog-extra-filters" className={cn("md:block", filtersOpen ? "block pt-3" : "hidden")}>
+        {/* Marca + Subcategoría (dependientes de la categoría) */}
+        {(brands.length > 0 || subcategories.length > 0) && (
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-3">
+            {brands.length > 0 && (
+              <Select value={brand} onValueChange={onBrandChange}>
+                <SelectTrigger className="h-9 min-w-[10rem] bg-card" aria-label="Filtrar por marca">
+                  <SelectValue placeholder="Todas las marcas" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={ALL}>Todas las marcas</SelectItem>
+                  {brands.map((b) => (
+                    <SelectItem key={b} value={b}>
+                      {b}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
 
-          {subcategories.length > 0 && (
-            <Select value={subcategory} onValueChange={onSubcategoryChange}>
-              <SelectTrigger className="h-9 min-w-[11rem] bg-card" aria-label="Filtrar por subcategoría">
-                <SelectValue placeholder="Todas las subcategorías" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value={ALL}>Todas las subcategorías</SelectItem>
-                {subcategories.map((s) => (
-                  <SelectItem key={s} value={s}>
-                    {s}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
-        </div>
-      )}
+            {subcategories.length > 0 && (
+              <Select value={subcategory} onValueChange={onSubcategoryChange}>
+                <SelectTrigger className="h-9 min-w-[11rem] bg-card" aria-label="Filtrar por subcategoría">
+                  <SelectValue placeholder="Todas las subcategorías" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={ALL}>Todas las subcategorías</SelectItem>
+                  {subcategories.map((s) => (
+                    <SelectItem key={s} value={s}>
+                      {s}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          </div>
+        )}
 
-      {/* Toggles + count */}
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-        <div className="flex items-center gap-2">
-          <Switch id="filter-offers" checked={offersOnly} onCheckedChange={onOffersToggle} />
-          <Label htmlFor="filter-offers" className="text-xs text-foreground/80 cursor-pointer">
-            Solo ofertas
-          </Label>
+        {/* Toggles + count */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <div className="flex items-center gap-2">
+            <Switch id="filter-offers" checked={offersOnly} onCheckedChange={onOffersToggle} />
+            <Label htmlFor="filter-offers" className="text-xs text-foreground/80 cursor-pointer">
+              Solo ofertas
+            </Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <Switch id="filter-stock" checked={inStockOnly} onCheckedChange={onInStockToggle} />
+            <Label htmlFor="filter-stock" className="text-xs text-foreground/80 cursor-pointer">
+              En stock
+            </Label>
+          </div>
+          <span className="text-xs text-muted-foreground">
+            {total} {total === 1 ? "producto" : "productos"}
+          </span>
         </div>
-        <div className="flex items-center gap-2">
-          <Switch id="filter-stock" checked={inStockOnly} onCheckedChange={onInStockToggle} />
-          <Label htmlFor="filter-stock" className="text-xs text-foreground/80 cursor-pointer">
-            En stock
-          </Label>
-        </div>
-        <span className="text-xs text-muted-foreground">
-          {total} {total === 1 ? "producto" : "productos"}
-        </span>
       </div>
     </div>
   )

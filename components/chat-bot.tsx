@@ -76,10 +76,10 @@ export function ChatBot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
       {/* Chat Window */}
       {isOpen && (
-        <Card className="mb-4 w-[380px] sm:w-[550px] h-[750px] max-h-[85vh] shadow-2xl border-[#D20480]/20 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <Card className="mb-4 w-[calc(100vw-2rem)] max-w-[380px] sm:max-w-none sm:w-[550px] h-[750px] max-h-[85vh] shadow-2xl border-[#D20480]/20 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           <CardHeader className="bg-[#D20480] text-white p-4 flex flex-row items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-2">
               <div className="bg-white p-0.5 rounded-full overflow-hidden w-10 h-10 border-2 border-white/20">
@@ -174,14 +174,14 @@ export function ChatBot() {
       <Button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "h-32 w-32 rounded-full shadow-2xl transition-all duration-300 border-4 p-0 overflow-hidden",
+          "h-14 w-14 sm:h-16 sm:w-16 rounded-full shadow-2xl transition-all duration-300 border-2 p-0 overflow-hidden",
           isOpen 
             ? "bg-white border-[#D20480]" 
             : "bg-white border-white hover:scale-110"
         )}
       >
         {isOpen ? (
-          <X className="w-16 h-16 text-[#D20480]" />
+          <X className="w-7 h-7 text-[#D20480]" />
         ) : (
           <div className="w-full h-full bg-white flex items-center justify-center p-1">
             <img src="/chatbot-avatar.jpeg" alt="Mascota Chat" className="w-full h-full object-contain" />

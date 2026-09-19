@@ -9,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group bg-card rounded-sm border border-border overflow-hidden hover:shadow-md hover:border-primary/40 transition-all duration-300 flex flex-col">
       {/* Image / placeholder */}
-      <div className="relative aspect-square bg-background/50 overflow-hidden flex items-center justify-center p-4">
+      <div className={`relative aspect-square overflow-hidden flex items-center justify-center p-4 ${product.image ? "bg-white" : "bg-background/50"}`}>
         {product.image ? (
           <img
             src={product.image}
@@ -41,7 +41,7 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
         )}
         {!product.inStock && (
-          <span className="absolute top-2 right-2 px-2 py-0.5 rounded-sm text-[10px] font-bold text-white bg-foreground/60">
+          <span className="absolute top-2 right-2 px-2 py-0.5 rounded-sm text-[10px] font-bold text-white bg-black/70">
             SIN STOCK
           </span>
         )}

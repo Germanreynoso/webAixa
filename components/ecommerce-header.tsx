@@ -1,10 +1,11 @@
 "use client"
 
-import { Search, User, ShoppingCart, Menu } from "lucide-react"
+import { Search, ShoppingCart, Menu } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useCart } from "@/components/cart/cart-provider"
 import { SiteSearch } from "@/components/search/site-search"
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 
 const NAV_LINKS = [
   { label: "SUSTRATOS", href: "/catalogo?cat=sustratos" },
@@ -17,6 +18,7 @@ const NAV_LINKS = [
 export function ECommerceHeader() {
   const { count, openCart } = useCart()
   const [searchOpen, setSearchOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   // null hasta montar en cliente, para evitar mismatch de hidratación.
   const [isMac, setIsMac] = useState<boolean | null>(null)
 
@@ -25,7 +27,7 @@ export function ECommerceHeader() {
   }, [])
 
   return (
-    <header className="w-full bg-transparent text-foreground border-b border-border/50 backdrop-blur-sm sticky top-0 z-50">
+    <header className="w-full bg-background/95 text-foreground border-b border-border/50 backdrop-blur-md sticky top-0 z-50">
       {/* Top Bar: Logo, Search, User Tools */}
       <div className="max-w-[1400px] mx-auto px-4 h-20 flex items-center justify-between gap-8">
         {/* Logo */}
@@ -61,9 +63,6 @@ export function ECommerceHeader() {
           >
             <Search className="h-6 w-6" />
           </button>
-          <Link href="/perfil" className="flex flex-col items-center gap-0.5 hover:text-primary transition-colors">
-            <User className="h-6 w-6" />
-          </Link>
           <button
             type="button"
             onClick={openCart}
@@ -79,7 +78,12 @@ export function ECommerceHeader() {
               )}
             </div>
           </button>
-          <button className="lg:hidden text-foreground">
+          <button
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Abrir menú"
+            className="lg:hidden text-foreground hover:text-primary transition-colors"
+          >
             <Menu className="h-6 w-6" />
           </button>
         </div>
@@ -111,12 +115,43 @@ export function ECommerceHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/catalogo?ofertas=1" className="px-4 h-full flex items-center text-sm font-bold text-primary hover:bg-black/10 whitespace-nowrap">
-              OFERTAS
+            <Link href="/catalogo?ofertas=1" className="px-2 h-full flex items-center whitespace-nowrap group">
+              <span className="px-3 py-1 rounded-full bg-white text-secondary text-sm font-black group-hover:bg-white/90 transition-colors">
+                OFERTAS
+              </span>
             </Link>
           </nav>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+        <SheetContent side="right" className="bg-card border-border gap-0">
+          <SheetHeader className="border-b border-border">
+            <SheetTitle className="text-sm font-black uppercase tracking-wide text-foreground">Menú</SheetTitle>
+          </SheetHeader>
+          <nav className="flex flex-col overflow-y-auto">
+            {[{ label: "INICIO", href: "/" }, { label: "TODO EL CATÁLOGO", href: "/catalogo" }, ...NAV_LINKS].map((link) => (
+              <SheetClose asChild key={link.href}>
+                <Link
+                  href={link.href}
+                  className="px-5 py-4 text-sm font-bold text-foreground/90 border-b border-border hover:text-primary hover:bg-background/40 transition-colors"
+                >
+                  {link.label}
+                </Link>
+              </SheetClose>
+            ))}
+            <SheetClose asChild>
+              <Link
+                href="/catalogo?ofertas=1"
+                className="px-5 py-4 text-sm font-black text-primary border-b border-border hover:bg-background/40 transition-colors"
+              >
+                OFERTAS
+              </Link>
+            </SheetClose>
+          </nav>
+        </SheetContent>
+      </Sheet>
 
       <SiteSearch open={searchOpen} onOpenChange={setSearchOpen} />
     </header>

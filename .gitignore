@@ -17,3 +17,5 @@ node_modules
 # typescript (autogenerados por Next)
 next-env.d.ts
 *.tsbuildinfo
+# Capturas de verificación (Playwright MCP)
+.playwright-mcp/
