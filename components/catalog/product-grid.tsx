@@ -1,9 +1,9 @@
 import { ProductCard } from "@/components/product-card"
 import { Empty, EmptyTitle, EmptyDescription } from "@/components/ui/empty"
-import type { Product } from "@/lib/products"
+import type { ProductGroup } from "@/lib/catalog"
 
-export function ProductGrid({ products }: { products: Product[] }) {
-  if (products.length === 0) {
+export function ProductGrid({ groups }: { groups: ProductGroup[] }) {
+  if (groups.length === 0) {
     return (
       <Empty className="border border-dashed border-border bg-card/30">
         <EmptyTitle>Sin resultados</EmptyTitle>
@@ -16,8 +16,8 @@ export function ProductGrid({ products }: { products: Product[] }) {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+      {groups.map((group) => (
+        <ProductCard key={group.key} group={group} />
       ))}
     </div>
   )

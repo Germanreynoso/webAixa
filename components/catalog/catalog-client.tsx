@@ -156,7 +156,7 @@ export function CatalogClient({
       />
 
       {filtered.length === 0 ? (
-        <ProductGrid products={[]} />
+        <ProductGrid groups={[]} />
       ) : category === "all" ? (
         CATEGORIES.map((cat) => (
           <CatalogSection

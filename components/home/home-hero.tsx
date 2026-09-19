@@ -65,7 +65,11 @@ export function HomeHero() {
                       {featured.brand}
                     </span>
                   )}
-                  <h2 className="text-sm font-bold text-foreground line-clamp-2">{featured.name}</h2>
+                  <h2 className="text-sm font-bold text-foreground line-clamp-2">
+                    <Link href={`/producto/${featured.id}`} className="hover:text-primary transition-colors">
+                      {featured.name}
+                    </Link>
+                  </h2>
                   <div className="mt-2 flex items-baseline gap-2">
                     <span className="text-xl font-black text-foreground">
                       {formatPrice(featured.salePrice as number)}

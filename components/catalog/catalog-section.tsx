@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { ProductGrid } from "@/components/catalog/product-grid"
 import type { Product } from "@/lib/products"
+import { groupVariants } from "@/lib/catalog"
 
 const INITIAL_VISIBLE = 10
 const STEP = 10
@@ -15,11 +16,13 @@ export function CatalogSection({
   products: Product[]
 }) {
   const [visible, setVisible] = useState(INITIAL_VISIBLE)
+  // Las presentaciones de un mismo producto comparten tarjeta: se pagina por tarjeta.
+  const groups = useMemo(() => groupVariants(products), [products])
 
   if (products.length === 0) return null
 
-  const shown = products.slice(0, visible)
-  const remaining = products.length - visible
+  const shown = groups.slice(0, visible)
+  const remaining = groups.length - visible
   const expanded = visible > INITIAL_VISIBLE
 
   return (
@@ -34,7 +37,7 @@ export function CatalogSection({
         <div className="w-16 h-1 bg-secondary mt-2" />
       </div>
 
-      <ProductGrid products={shown} />
+      <ProductGrid groups={shown} />
 
       {(remaining > 0 || expanded) && (
         <div className="flex justify-center items-center gap-3 mt-6">

@@ -49,6 +49,7 @@ export const viewport: Viewport = {
 import { ChatBot } from '@/components/chat-bot'
 import { CartProvider } from '@/components/cart/cart-provider'
 import { CartDrawer } from '@/components/cart/cart-drawer'
+import { AgeGate } from '@/components/age-gate'
 
 export default function RootLayout({
   children,
@@ -62,6 +63,7 @@ export default function RootLayout({
           {children}
           <CartDrawer />
           <ChatBot />
+          <AgeGate />
         </CartProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -179,7 +179,7 @@ export function SiteSearch({ open, onOpenChange }: SiteSearchProps) {
                     <CommandItem
                       key={`prod-${p.id}`}
                       value={`prod-${p.id}`}
-                      onSelect={() => go(`/catalogo?q=${encodeURIComponent(p.name)}`)}
+                      onSelect={() => go(`/producto/${p.id}`)}
                       className="cursor-pointer"
                     >
                       <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-border bg-background">
