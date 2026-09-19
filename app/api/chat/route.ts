@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
 
+// Groq retira modelos con frecuencia (llama-3.1-8b-instant ya no existe).
+// Se puede cambiar sin tocar código con la variable de entorno GROQ_MODEL.
+const GROQ_MODEL = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
+
 export async function POST(req: Request) {
   try {
     if (!process.env.GROQ_API_KEY) {
@@ -14,7 +18,7 @@ export async function POST(req: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
+        model: GROQ_MODEL,
         messages: [
           {
             role: 'system',
@@ -23,7 +27,10 @@ export async function POST(req: Request) {
           ...messages
         ],
         temperature: 0.5,
-        max_tokens: 500,
+        // gpt-oss razona antes de responder: esfuerzo bajo y margen de tokens
+        // para que el razonamiento no se coma la respuesta visible.
+        reasoning_effort: 'low',
+        max_completion_tokens: 1024,
       }),
     });
 
