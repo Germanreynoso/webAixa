@@ -67,10 +67,11 @@ export function CatalogFilters({
   const activeCount =
     Number(brand !== ALL) + Number(subcategory !== ALL) + Number(offersOnly) + Number(inStockOnly)
 
+  // Desktop: dos filas compactas (buscador + categorías / marca, subcategoría y toggles).
   return (
-    <div className="sticky top-[124px] z-30 -mx-4 px-4 py-3 md:py-4 mb-8 bg-background/80 backdrop-blur border-b border-border">
+    <div className="sticky top-[124px] z-30 -mx-4 px-4 py-3 md:py-2.5 mb-8 bg-background/90 backdrop-blur border-b border-border md:flex md:flex-wrap md:items-center md:gap-x-3 md:gap-y-2">
       {/* Search + toggle de filtros (móvil) */}
-      <div className="flex items-center gap-2 max-w-xl mx-auto mb-3 md:mb-4">
+      <div className="flex items-center gap-2 max-w-xl mx-auto mb-3 md:mx-0 md:mb-0 md:w-64 lg:w-72 md:shrink-0">
         <div className="relative flex-grow">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -78,7 +79,7 @@ export function CatalogFilters({
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Buscar productos..."
-            className="pl-9 bg-card border-border h-11 focus-visible:ring-primary/30 text-foreground"
+            className="pl-9 bg-card border-border h-11 md:h-9 focus-visible:ring-primary/30 text-foreground"
             aria-label="Buscar productos"
           />
         </div>
@@ -104,8 +105,8 @@ export function CatalogFilters({
         </button>
       </div>
 
-      {/* Category chips: una fila deslizable en móvil, centradas en desktop */}
-      <div className="flex items-center gap-2 -mx-4 px-4 overflow-x-auto no-scrollbar md:mx-0 md:px-0 md:flex-wrap md:justify-center md:overflow-visible md:mb-3">
+      {/* Category chips: una fila deslizable en móvil, junto al buscador en desktop */}
+      <div className="flex items-center gap-2 -mx-4 px-4 overflow-x-auto no-scrollbar md:mx-0 md:px-0 md:flex-1 md:flex-wrap md:overflow-visible">
         {chips.map((chip) => (
           <button
             key={chip.id}
@@ -124,10 +125,13 @@ export function CatalogFilters({
         ))}
       </div>
 
-      <div id="catalog-extra-filters" className={cn("md:block", filtersOpen ? "block pt-3" : "hidden")}>
+      {/* Corte de fila en desktop */}
+      <div aria-hidden="true" className="hidden md:block basis-full h-0" />
+
+      <div id="catalog-extra-filters" className={cn("md:contents", filtersOpen ? "block pt-3" : "hidden")}>
         {/* Marca + Subcategoría (dependientes de la categoría) */}
         {(brands.length > 0 || subcategories.length > 0) && (
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-3">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-3 md:justify-start md:gap-2 md:mb-0">
             {brands.length > 0 && (
               <Select value={brand} onValueChange={onBrandChange}>
                 <SelectTrigger className="h-9 min-w-[10rem] bg-card" aria-label="Filtrar por marca">
@@ -163,7 +167,7 @@ export function CatalogFilters({
         )}
 
         {/* Toggles + count */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:ml-auto md:justify-end md:gap-x-5">
           <div className="flex items-center gap-2">
             <Switch id="filter-offers" checked={offersOnly} onCheckedChange={onOffersToggle} />
             <Label htmlFor="filter-offers" className="text-xs text-foreground/80 cursor-pointer">
