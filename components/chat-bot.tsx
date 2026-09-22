@@ -21,6 +21,24 @@ export function ChatBot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // El botón se esconde mientras se baja por la página para no tapar productos,
+  // y vuelve al subir o al llegar arriba.
+  const [scrollHidden, setScrollHidden] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      if (Math.abs(delta) < 8) return; // ignora micro-movimientos
+      setScrollHidden(delta > 0 && y > 200);
+      lastY = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const toggleHidden = scrollHidden && !isOpen;
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -173,15 +191,18 @@ export function ChatBot() {
       {/* Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
+        onFocus={() => setScrollHidden(false)}
+        aria-label={isOpen ? 'Cerrar asistente' : 'Abrir asistente de cultivo'}
         className={cn(
-          "h-14 w-14 sm:h-16 sm:w-16 rounded-full shadow-2xl transition-all duration-300 border-2 p-0 overflow-hidden",
+          "h-12 w-12 sm:h-14 sm:w-14 rounded-full shadow-2xl transition-all duration-300 motion-reduce:transition-none border-2 p-0 overflow-hidden",
           isOpen 
             ? "bg-white border-[#D20480]" 
-            : "bg-white border-white hover:scale-110"
+            : "bg-white border-white hover:scale-110",
+          toggleHidden && "translate-y-24 opacity-0 pointer-events-none"
         )}
       >
         {isOpen ? (
-          <X className="w-7 h-7 text-[#D20480]" />
+          <X className="w-6 h-6 text-[#D20480]" />
         ) : (
           <div className="w-full h-full bg-white flex items-center justify-center p-1">
             <img src="/chatbot-avatar.jpeg" alt="Mascota Chat" className="w-full h-full object-contain" />

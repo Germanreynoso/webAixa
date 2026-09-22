@@ -3,7 +3,7 @@ import { BrandMosaic } from "@/components/brand-mosaic"
 
 export function StoryTeaser() {
   return (
-    <section aria-labelledby="historia-title" className="max-w-[1400px] mx-auto px-4 pt-16">
+    <section aria-labelledby="historia-title" className="max-w-[1400px] mx-auto px-4 pt-16 md:pt-24">
       <div className="grid md:grid-cols-[minmax(0,320px)_1fr] gap-8 md:gap-12 items-center bg-card border border-border rounded-sm p-6 sm:p-10">
         <BrandMosaic caption={false} className="rounded-sm max-md:aspect-[16/10]" />
 

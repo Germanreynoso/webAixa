@@ -15,6 +15,13 @@ const NAV_LINKS = [
   { label: "ACCESORIOS", href: "/catalogo?cat=accesorios" },
 ]
 
+const DESKTOP_LINKS = [
+  { label: "INICIO", href: "/" },
+  { label: "CATÁLOGO", href: "/catalogo" },
+  ...NAV_LINKS,
+  { label: "NOSOTROS", href: "/nosotros" },
+]
+
 export function ECommerceHeader() {
   const { count, openCart } = useCart()
   const [searchOpen, setSearchOpen] = useState(false)
@@ -89,42 +96,26 @@ export function ECommerceHeader() {
         </div>
       </div>
 
-      {/* Navigation Bar: Green background */}
-      <div className="bg-secondary text-white">
-        <div className="max-w-[1400px] mx-auto px-4 flex h-11 items-center">
-          {/* Categories Toggle */}
-          <Link
-            href="/catalogo"
-            className="bg-secondary-dark/20 h-full px-6 flex items-center gap-3 cursor-pointer hover:bg-black/10 transition-colors uppercase font-bold text-sm"
-          >
-            <Menu className="h-4 w-4" />
-            CATEGORÍAS
+      {/* Navegación de escritorio. En celular no se muestra: el menú ☰ tiene las mismas
+          secciones, y así la barra no duplica "Comprá por categoría" ni ocupa alto fijo.
+          Oscura a propósito: el magenta queda para acciones y ofertas. */}
+      <div className="hidden lg:block border-t border-border/60 bg-card/60">
+        <nav className="max-w-[1400px] mx-auto px-4 flex h-11 items-center overflow-x-auto no-scrollbar">
+          {DESKTOP_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="px-4 h-full flex items-center text-sm font-bold text-foreground/80 hover:text-primary whitespace-nowrap transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/catalogo?ofertas=1" className="px-2 h-full flex items-center whitespace-nowrap group">
+            <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-black group-hover:bg-accent transition-colors">
+              OFERTAS
+            </span>
           </Link>
-
-          {/* Main Menu - Only visible on desktop */}
-          <nav className="hidden lg:flex h-full items-center ml-4 overflow-x-auto no-scrollbar">
-            <Link href="/" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 whitespace-nowrap">
-              INICIO
-            </Link>
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 whitespace-nowrap"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link href="/nosotros" className="px-4 h-full flex items-center text-sm font-bold hover:bg-black/10 whitespace-nowrap">
-              NOSOTROS
-            </Link>
-            <Link href="/catalogo?ofertas=1" className="px-2 h-full flex items-center whitespace-nowrap group">
-              <span className="px-3 py-1 rounded-full bg-white text-secondary text-sm font-black group-hover:bg-white/90 transition-colors">
-                OFERTAS
-              </span>
-            </Link>
-          </nav>
-        </div>
+        </nav>
       </div>
 
       {/* Mobile menu */}

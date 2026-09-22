@@ -11,10 +11,10 @@ export function BrandStrip() {
   if (brands.length === 0) return null
 
   return (
-    <section aria-labelledby="marcas-title" className="max-w-[1400px] mx-auto px-4 pt-12">
+    <section aria-labelledby="marcas-title" className="max-w-[1400px] mx-auto px-4 pt-16 md:pt-24">
       <h2
         id="marcas-title"
-        className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mb-6"
+        className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mb-6 md:mb-8"
       >
         Marcas que trabajamos
       </h2>

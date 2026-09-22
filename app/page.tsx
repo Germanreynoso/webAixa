@@ -1,5 +1,6 @@
 import { ECommerceHeader } from "@/components/ecommerce-header"
 import { HomeHero } from "@/components/home/home-hero"
+import { FeaturedOfferCard } from "@/components/home/featured-offer-card"
 import { BenefitsBar } from "@/components/home/benefits-bar"
 import { CategoryMosaic } from "@/components/home/category-mosaic"
 import { FeaturedOffers } from "@/components/featured-offers"
@@ -15,6 +16,7 @@ export default function Home() {
       <ECommerceHeader />
       <div className="pb-12">
         <HomeHero />
+        <FeaturedOfferCard />
         <BenefitsBar />
         <CategoryMosaic />
         <FeaturedOffers />

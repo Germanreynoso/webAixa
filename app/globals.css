@@ -144,9 +144,12 @@
 }
 
 /* Gradient utilities */
+/* Fondo de página: oscuro, con un brillo magenta sutil solo arriba. El magenta
+   queda reservado para acciones, ofertas y detalles (criterio de color acordado). */
 .gradient-hero {
-  background: linear-gradient(145deg, #050505 0%, #1a1a1b 30%, #282829 60%, #A70366 90%, #D20480 100%);
-  background-attachment: fixed;
+  background:
+    radial-gradient(ellipse 70% 35% at 100% 0%, rgba(210, 4, 128, 0.14), transparent 70%),
+    linear-gradient(180deg, #161617 0%, #1a1a1b 100%);
 }
 .gradient-hero-vibrant {
   background: radial-gradient(circle at top right, #D20480, transparent),

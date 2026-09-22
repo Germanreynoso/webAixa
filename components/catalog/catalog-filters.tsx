@@ -69,7 +69,7 @@ export function CatalogFilters({
 
   // Desktop: dos filas compactas (buscador + categorías / marca, subcategoría y toggles).
   return (
-    <div className="sticky top-[124px] z-30 -mx-4 px-4 py-3 md:py-2.5 mb-8 bg-background/90 backdrop-blur border-b border-border md:flex md:flex-wrap md:items-center md:gap-x-3 md:gap-y-2">
+    <div className="sticky top-20 lg:top-[124px] z-30 -mx-4 px-4 py-3 md:py-2.5 mb-8 bg-background/90 backdrop-blur border-b border-border md:flex md:flex-wrap md:items-center md:gap-x-3 md:gap-y-2">
       {/* Search + toggle de filtros (móvil) */}
       <div className="flex items-center gap-2 max-w-xl mx-auto mb-3 md:mx-0 md:mb-0 md:w-64 lg:w-72 md:shrink-0">
         <div className="relative flex-grow">

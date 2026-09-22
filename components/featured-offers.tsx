@@ -12,10 +12,10 @@ export function FeaturedOffers() {
   if (offers.length === 0) return null
 
   return (
-    <section id="ofertas" className="relative pt-12 bg-transparent overflow-hidden">
+    <section id="ofertas" className="relative pt-16 md:pt-24 bg-transparent overflow-hidden">
       <div className="mx-auto max-w-[1400px] px-4">
         {/* Header */}
-        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-6">
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-6 md:mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-black text-foreground uppercase tracking-tight">
               Ofertas de hoy
